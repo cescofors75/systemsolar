@@ -42,7 +42,7 @@
 #define EXAMPLE_LCD_BIT_PER_PIXEL       (16)   ///< Bits per pixel (color depth)
 #define EXAMPLE_RGB_BIT_PER_PIXEL       (16)   ///< RGB interface color depth
 #define EXAMPLE_RGB_DATA_WIDTH          (16)   ///< Data width for RGB interface
-#define EXAMPLE_LCD_RGB_BUFFER_NUMS     (2)    ///< Number of frame buffers for double buffering
+#define EXAMPLE_LCD_RGB_BUFFER_NUMS     (1)    ///< Number of frame buffers
 #define EXAMPLE_RGB_BOUNCE_BUFFER_SIZE  (EXAMPLE_LCD_H_RES * 10) ///< Size of bounce buffer for RGB data
 
 /**
@@ -112,18 +112,17 @@ void wavesahre_rgb_lcd_bl_off();
 void wavesahre_rgb_lcd_display_window(int16_t Xstart, int16_t Ystart, int16_t Xend, int16_t Yend, uint8_t *Image);
 
 /**
- * @brief Display a full-frame image on the RGB LCD.
+ * @brief Copy a full frame to the RGB panel.
  *
  * @param Image Pointer to the image data buffer.
  */
 void wavesahre_rgb_lcd_display(uint8_t *Image);
 
 /**
- * @brief Retrieve pointers to the frame buffers for double buffering.
+ * @brief Retrieve the RGB panel frame buffer.
  *
- * @param buf1 Pointer to hold the address of the first frame buffer.
- * @param buf2 Pointer to hold the address of the second frame buffer.
+ * @param buf Pointer to hold the address of the frame buffer.
  */
-void waveshare_get_frame_buffer(void **buf1, void **buf2);
+void waveshare_get_frame_buffer(void **buf);
 
 #endif // _RGB_LCD_H_

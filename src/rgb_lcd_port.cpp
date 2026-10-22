@@ -154,23 +154,14 @@ void wavesahre_rgb_lcd_display_window(int16_t Xstart, int16_t Ystart, int16_t Xe
 }
 
 
-/**
- * @brief Display a full-screen image on the RGB LCD.
- *
- * This function replaces the entire LCD screen content with the image data
- * provided. It assumes the display resolution is 800x480.
- *
- * @param Image Pointer to the image data buffer.
- */
 void wavesahre_rgb_lcd_display(uint8_t *Image)
 {
-    // Draw the entire image on the screen
-    esp_lcd_panel_draw_bitmap(panel_handle, 0, 0, EXAMPLE_LCD_H_RES, EXAMPLE_LCD_V_RES, Image);
+    ESP_ERROR_CHECK(esp_lcd_panel_draw_bitmap(panel_handle, 0, 0, EXAMPLE_LCD_H_RES, EXAMPLE_LCD_V_RES, Image));
 }
 
-void waveshare_get_frame_buffer(void **buf1, void **buf2)
+void waveshare_get_frame_buffer(void **buf)
 {
-    ESP_ERROR_CHECK(esp_lcd_rgb_panel_get_frame_buffer(panel_handle, 2, buf1, buf2));
+    ESP_ERROR_CHECK(esp_lcd_rgb_panel_get_frame_buffer(panel_handle, 1, buf));
 }
 /**
  * @brief Turn on the RGB LCD screen backlight.

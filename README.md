@@ -21,10 +21,12 @@ En PowerShell, desde esta carpeta:
 
 ```powershell
 $env:PYTHONIOENCODING='utf-8'
-pio run
-pio run -t upload --upload-port <PUERTO>
-pio device monitor -p <PUERTO> -b 115200
+& "$env:USERPROFILE\.platformio\penv\Scripts\platformio.exe" run
+& "$env:USERPROFILE\.platformio\penv\Scripts\platformio.exe" run -t upload --upload-port <PUERTO>
+& "$env:USERPROFILE\.platformio\penv\Scripts\platformio.exe" device monitor -p <PUERTO> -b 115200
 ```
+
+En Windows, PlatformIO ejecuta esptool como módulo de Python para generar las imágenes de firmware. Usa el ejecutable de PlatformIO de su entorno (`.platformio\penv`): un `pio` de otra instalación de Python puede no tener esptool.
 
 En VS Code también se pueden ejecutar las tareas PlatformIO disponibles desde `Terminal > Ejecutar tarea`. Sustituye `<PUERTO>` por el puerto serie de tu placa.
 
